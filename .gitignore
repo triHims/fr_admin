@@ -1,0 +1,7 @@
+#untracked files 
+#.pyc files
+*.pyc
+*.jpeg
+*.jpg
+*.npy
+*.mat
