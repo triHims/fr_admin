@@ -44,11 +44,11 @@ if(args.enroll):
 
 
 #model declarations 
-sp_path="/run/media/estrossa/fast_ext/estrossa/zips/5landmarks.dat"		
+sp_path="references/5landmarks.dat"		
+network_model="references/resnet.dat"	
 
 
 
-network_model="/run/media/estrossa/fast_ext/estrossa/face_verification_experiment/model/resnet.dat"
 
 
 
