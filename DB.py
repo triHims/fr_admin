@@ -165,7 +165,7 @@ class connectDB:
         
 
         while True:
-            time.sleep(0.06)         
+            time.sleep(1)         
             while(inqueue.qsize()==0):
                 time.sleep(1)
                 print("sleeping")

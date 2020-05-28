@@ -75,7 +75,7 @@ class ThreadStream:
     def update(self):
         
         while True:
-            time.sleep(.06)
+            time.sleep(.1)
             if(self.stopped):
                 return
             if not self.Q.full():
@@ -171,7 +171,7 @@ class FaceRecognize:
 
         while True:
             
-            time.sleep(0.06)
+            time.sleep(0.5)
             
             while(self.inqueue.qsize()==0):
                 time.sleep(1)
