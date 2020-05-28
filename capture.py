@@ -21,7 +21,7 @@ from threading import Thread
 from Queue import Queue
 from Queue import Empty
 import multiprocessing as mp
-
+import MPQueue
 from DB import connectDB
 import logging
 
@@ -122,6 +122,11 @@ class ThreadStream:
         self.stopped=True
         self.stream.release()
         self.Q.queue.clear()
+
+
+
+
+
 
 
 class FaceRecognize:
@@ -272,8 +277,8 @@ if not flag_rec:
 
 
     vid=ThreadStream(0,100)
-    inqueue=mp.Queue(maxsize=20)
-    outqueue=mp.Queue()
+    inqueue=MPQueue.Queue(maxsize=20)
+    outqueue=MPQueue.Queue()
     fcr=FaceRecognize(network_model,sp_path,512,inqueue,outqueue)
 
     vid.start()
@@ -352,9 +357,9 @@ else:
 
 
     vid=ThreadStream(0,100)
-    inqueue=mp.Queue(maxsize=20)
-    midqueue = mp.Queue(maxsize=1024)
-    outqueue = mp.Queue()
+    inqueue=MPQueue.Queue(maxsize=20)
+    midqueue = MPQueue.Queue(maxsize=1024)
+    outqueue = MPQueue.Queue()
 
     fcr=FaceRecognize(network_model,sp_path,512,inqueue,midqueue)
     # mp.log_to_stderr(logging.Error)
