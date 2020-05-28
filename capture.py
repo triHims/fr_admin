@@ -75,7 +75,7 @@ class ThreadStream:
     def update(self):
         
         while True:
-
+            time.sleep(.06)
             if(self.stopped):
                 return
             if not self.Q.full():
@@ -171,7 +171,7 @@ class FaceRecognize:
 
         while True:
             
-            
+            time.sleep(0.06)
             
             while(self.inqueue.qsize()==0):
                 time.sleep(1)
@@ -179,7 +179,7 @@ class FaceRecognize:
             
             dimm = self.inqueue.get(block=True,timeout=2)
             
-            
+            print("running recognize")
             if(dimm is None):  #before dying kill outqueue
                 try:
                     self.outqueue.put(None)
@@ -318,7 +318,7 @@ if not flag_rec:
                 
         
         
-        if(time.time()-tx < 0.105 ): time.sleep( 0.105-(time.time()-tx))
+        if(time.time()-tx < 0.06 ): time.sleep( 0.06-(time.time()-tx))
 
 
 
@@ -405,7 +405,7 @@ else:
                 
         
         
-        if(time.time()-tx < 0.105 ): time.sleep( 0.105-(time.time()-tx))
+        if(time.time()-tx < 0.06 ): time.sleep( 0.06-(time.time()-tx))
 
 
 

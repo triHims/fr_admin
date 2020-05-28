@@ -164,7 +164,8 @@ class connectDB:
     def db_multi_thead(self,inqueue,outqueue):
         
 
-        while True:         
+        while True:
+            time.sleep(0.06)         
             while(inqueue.qsize()==0):
                 time.sleep(1)
                 print("sleeping")
