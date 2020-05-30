@@ -75,7 +75,7 @@ class ThreadStream:
     def update(self):
         
         while True:
-            time.sleep(.1)
+            time.sleep(.06)
             if(self.stopped):
                 return
             if not self.Q.full():
@@ -110,7 +110,7 @@ class ThreadStream:
 
     def  more(self):
         if(self.Q.qsize() <= 0 ): 
-            print("Queue Empty")
+            print("Queue Empty Ending")
             return not self.stopped
         else:
             return True
@@ -155,7 +155,7 @@ class FaceRecognize:
     def start(self):
         self.stopped=False
         
-        # time.sleep(2)
+        time.sleep(2)
         self.t.daemon=True
         self.t.start()
         return self
@@ -171,7 +171,7 @@ class FaceRecognize:
 
         while True:
             
-            time.sleep(0.5)
+            time.sleep(0.06)
             
             while(self.inqueue.qsize()==0):
                 time.sleep(1)
@@ -323,7 +323,7 @@ if not flag_rec:
 
 
 
-
+        print(frame.shape)
         cv2.imshow('Capturing Video',frame)
 
         out=np.array(fr_read(outqueue))

@@ -165,10 +165,10 @@ class connectDB:
         
 
         while True:
-            time.sleep(1)         
+            time.sleep(0.06)         
             while(inqueue.qsize()==0):
                 time.sleep(1)
-                print("sleeping")
+                print("db sleeping")
             
             array = inqueue.get(block=True,timeout=2)
             if(array is None):
