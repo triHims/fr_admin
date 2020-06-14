@@ -25,7 +25,7 @@ import MPQueue
 from DB import connectDB
 import logging
 
-os.environ['GLOG_minloglevel'] = '50'
+# os.environ['GLOG_minloglevel'] = '50'
 
 #setup parser
 parser = argparse.ArgumentParser("Start the Attendence system in Recognize mode")
@@ -185,27 +185,31 @@ class FaceRecognize:
                     self.outqueue.put(None)
                
                 except AssertionError:
+                    print("Error on assertion line 188 capture.py")
                     return
                 return 
 
+            
 
 
-            print("hello 1"+str(self.inqueue.qsize()))
+            print("current queue length "+str(self.inqueue.qsize()))
             # if():
             #     self.stop()
                 # return 
             sys.stdout.flush()
             aligned=self.Alignment(dimm.image,dimm.gray,dimm.rect)
-            
-            vals=self.recognize(aligned)
-            np_score=misc.dlibVect_to_numpyNDArray(vals)
-            # print type(np_score)
-            # np_score=vals
-
-
+            if aligned is not None and len(aligned.shape) > 0 :
                 
-            self.outqueue.put(np_score)
+                vals=self.recognize(aligned)
+                np_score=misc.dlibVect_to_numpyNDArray(vals)
+                # print type(np_score)
+                # np_score=vals
+
+
+                    
+                self.outqueue.put(np_score)
             # print(np_score[:5])
+            # ->>>>>>>>>>>>> here the condition of the empty image after resize is checked 
 
 
 

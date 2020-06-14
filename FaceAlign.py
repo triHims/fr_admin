@@ -98,6 +98,13 @@ class FaceAligner:
                 # cv2.imshow("img",output)
                 # cv2.waitKey(0)
                 # return the aligned face
+                print("=================================================================")
+                
+                if(output.shape[0] < 1 or  output.shape[1] < 1 or output.shape[2] <1 ) :
+                        print("(+_+) this frame was excluded due to invalid size ",output.shape[0],  output.shape[1] ,output.shape[2])
+                        return None
+                        
+               
                 return cv2.resize(output,(150,150))
 
 
